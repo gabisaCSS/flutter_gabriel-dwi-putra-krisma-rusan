@@ -1,4 +1,4 @@
-//function ini berfungsi untuk
+//function ini berfungsi untuk mengecek apakah suatu string itu polindrom
 bool isPolindrom({required String string}) {
   String original = string;
   String reversed = original.split('').reversed.join('');
