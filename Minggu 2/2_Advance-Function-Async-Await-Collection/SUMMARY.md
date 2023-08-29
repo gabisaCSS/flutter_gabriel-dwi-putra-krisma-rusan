@@ -1,0 +1,5 @@
+1.  Anonymous function merupakan function yang tidak memiliki nama, dan berfungsi sebagai data. Anonymous function biasanya langsung disimpan ke dalam suatu variabel, lalu dipanggil pada fungsi main.
+
+2. Asyncronous merupakan istilah dalam bahasa pemrograman seperti dart yang berfungsi untuk menjalankan beberapa proses tanpa perlu menunggu, dan proses ditulis dalam bentuk fungsi. Keyword await adalah kata kunci untuk menunggu proses async selesai baru lanjut ke baris selanjutnya. Future merupakan suatu tipe data yang datanya dapat ditunggu dan berfungsi untuk membawa data return dari fungsi async.
+
+3. Collection merupakan kumpulan data pada satu tempat. Collection ada beberapa jenis di dart, yaitu List, dan map. List merupakan sekumpulan data yang sejenis, mirip seperti array, dan menggunakan index. Sedangkan map merupakan struktur data key-value.
