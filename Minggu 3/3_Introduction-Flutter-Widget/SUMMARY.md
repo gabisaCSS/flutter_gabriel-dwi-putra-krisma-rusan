@@ -1,0 +1,5 @@
+1. Flutter merupakan alat pengembangan antarmuka pengguna yang digunakan untuk membuat aplikasi mobile, desktop, dan web. Flutter memiliki keunggulan berupa mudah digunakan, produktivitas tinggi, dokumentasi lengkap, dan memiliki komunitas yang berkembang. Flutter merupakan framework yang dikembangkan oleh google.
+
+2. Widget pada flutter merupakan class yang digunakan untuk membentuk antarmuka (UI). Widget dapat terdiri dari beberapa widget lainnya. Flutter memiliki built-in widget yang dapat langsung digunakan seperti MaterialApp yang berfungsi sebagai ibarat tanahnya.Lalu ada Scaffold yang berfungsi membentuk halaman. AppBar untu membentuk application bar yang ada pada bagian atas halaman. Text untuk menampilkan teks, dan masih banyak yang lain.
+
+3. Widget ada 2 jenis di flutter. Yaitu stateless dan stateful. Stateless widget merupakan widget yang hanya fokus pada tampilan dan tidak bergantung pada perubahan data, dibuat dengan extends pada class StatelessWidget. Sedangkan stateful widget sebaliknya, widget ini mementingkan pada perubahan data, widget ini menggunakan 2 class (widget dan state), dan dibuat dengan extends pada class StatefulWidget.
