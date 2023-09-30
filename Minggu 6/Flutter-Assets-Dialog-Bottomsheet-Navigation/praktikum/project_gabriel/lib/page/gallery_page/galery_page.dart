@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_gabriel/constants/assets.dart';
+import 'package:project_gabriel/navigation/navigation.dart';
+import 'package:project_gabriel/widget/drawer_widget.dart';
 
 class GaleryPage extends StatefulWidget {
   const GaleryPage({super.key});
@@ -27,7 +29,9 @@ class _GaleryPageState extends State<GaleryPage> {
       appBar: AppBar(
         title: const Text('Gallery Page'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        centerTitle: true,
       ),
+      drawer: const DrawerWidget(),
       body: GridView.builder(
           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
@@ -71,7 +75,8 @@ class _GaleryPageState extends State<GaleryPage> {
                                               Navigator.pop(context);
                                               Navigator.of(context)
                                                   .pushReplacementNamed(
-                                                      '/detailImage',
+                                                      Navigation
+                                                          .detailImagePage,
                                                       arguments: images[index]);
                                             },
                                             child: const Text('Ya')),

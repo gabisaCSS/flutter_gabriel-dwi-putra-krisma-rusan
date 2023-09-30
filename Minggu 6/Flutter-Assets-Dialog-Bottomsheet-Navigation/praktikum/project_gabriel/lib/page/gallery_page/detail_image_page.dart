@@ -9,6 +9,7 @@ class DetailImagePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Detail Image Page'),
+        centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: Column(
