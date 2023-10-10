@@ -63,22 +63,45 @@ class EditPage extends StatelessWidget {
                 final stateUsername = context.read<UsernameFieldBloc>().state;
                 final statePhone = context.read<PhoneFieldBloc>().state;
 
-                if (stateUsername is UsernameFieldAmanState &&
-                    statePhone is PhoneFieldAmanState) {
-                  // context.read<ListContactBloc>().add(AddNewContactEvent(
-                  //     name: stateUsername.nameValue,
-                  //     phone: statePhone.phoneValue));
+                bool isAllAmanState = stateUsername is UsernameFieldAmanState &&
+                    statePhone is PhoneFieldAmanState;
+                bool isAllEditState = stateUsername is UsernameFieldEditState &&
+                    statePhone is PhoneFieldEditState;
+                bool isUsernameAmanAndPhoneEditState =
+                    stateUsername is UsernameFieldAmanState &&
+                        statePhone is PhoneFieldEditState;
+                bool isUsernameEditAndPhoneAmanState =
+                    stateUsername is UsernameFieldEditState &&
+                        statePhone is PhoneFieldAmanState;
+
+                if (isAllAmanState) {
                   context.read<ListContactBloc>().add(EditContactEvent(
                       name: stateUsername.nameValue,
                       phone: statePhone.phoneValue,
                       index: editIndex));
-                  context
-                      .read<UsernameFieldBloc>()
-                      .add(UsernameFieldClearEvent());
-                  context.read<PhoneFieldBloc>().add(PhoneFieldClearEvent());
-
-                  Navigator.pop(context);
+                } else if (isAllEditState) {
+                  context.read<ListContactBloc>().add(EditContactEvent(
+                      name: stateUsername.currentNameValue,
+                      phone: statePhone.currentPhoneValue,
+                      index: editIndex));
+                } else if (isUsernameAmanAndPhoneEditState) {
+                  context.read<ListContactBloc>().add(EditContactEvent(
+                      name: stateUsername.nameValue,
+                      phone: statePhone.currentPhoneValue,
+                      index: editIndex));
+                } else if (isUsernameEditAndPhoneAmanState) {
+                  context.read<ListContactBloc>().add(EditContactEvent(
+                      name: stateUsername.currentNameValue,
+                      phone: statePhone.phoneValue,
+                      index: editIndex));
                 }
+
+                context
+                    .read<UsernameFieldBloc>()
+                    .add(UsernameFieldClearEvent());
+                context.read<PhoneFieldBloc>().add(PhoneFieldClearEvent());
+
+                Navigator.pop(context);
               })
         ],
       ),

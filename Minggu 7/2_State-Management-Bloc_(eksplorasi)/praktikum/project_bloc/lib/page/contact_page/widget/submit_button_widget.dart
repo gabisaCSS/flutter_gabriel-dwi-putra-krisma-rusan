@@ -16,11 +16,13 @@ class SubmitButtonWidget extends StatelessWidget {
       final stateUsernameField = context.watch<UsernameFieldBloc>().state;
       final statePhoneField = context.watch<PhoneFieldBloc>().state;
 
-      bool isEnabledUsername = stateUsernameField is UsernameFieldAmanState &&
-          stateUsernameField.nameValue.isNotEmpty;
+      bool isEnabledUsername = (stateUsernameField is UsernameFieldAmanState &&
+              stateUsernameField.nameValue.isNotEmpty) ||
+          stateUsernameField is UsernameFieldEditState;
 
       bool isEnabledPhone = statePhoneField is PhoneFieldAmanState &&
-          statePhoneField.phoneValue.isNotEmpty;
+              statePhoneField.phoneValue.isNotEmpty ||
+          statePhoneField is PhoneFieldEditState;
 
       return Padding(
         padding: const EdgeInsets.only(right: 20, bottom: 50),

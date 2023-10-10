@@ -5,7 +5,7 @@ part 'phone_field_event.dart';
 part 'phone_field_state.dart';
 
 class PhoneFieldBloc extends Bloc<PhoneFieldEvent, PhoneFieldState> {
-  PhoneFieldBloc() : super(const PhoneFieldErrorState()) {
+  PhoneFieldBloc() : super(const PhoneFieldAmanState(phoneValue: '')) {
     on<PhoneFieldInputEvent>(_onPhoneChanged);
     on<PhoneFieldClearEvent>(_onClearPhoneField);
     on<PhoneFieldEditEvent>(_onEditPhoneField);
@@ -13,12 +13,12 @@ class PhoneFieldBloc extends Bloc<PhoneFieldEvent, PhoneFieldState> {
 
   void _onClearPhoneField(
       PhoneFieldClearEvent event, Emitter<PhoneFieldState> emit) {
-    emit(const PhoneFieldAmanState(phoneValue: ''));
+    emit(PhoneFieldClearState());
   }
 
   void _onEditPhoneField(
       PhoneFieldEditEvent event, Emitter<PhoneFieldState> emit) {
-    emit(PhoneFieldAmanState(phoneValue: event.currentPhoneValue));
+    emit(PhoneFieldEditState(currentPhoneValue: event.currentPhoneValue));
   }
 
   void _onPhoneChanged(

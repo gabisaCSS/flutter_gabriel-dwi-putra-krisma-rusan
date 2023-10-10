@@ -30,3 +30,18 @@ final class UsernameFieldAmanState extends UsernameFieldState {
   List<Object> get props => [nameValue];
 }
 // END state jika tidak ada error di field username
+
+final class UsernameFieldClearState extends UsernameFieldState {
+  @override
+  List<Object> get props => [];
+}
+
+// state di bawah ini untuk memberikan value awal pada textfieldnya saat edit
+final class UsernameFieldEditState extends UsernameFieldState {
+  final String currentNameValue;
+
+  const UsernameFieldEditState({required this.currentNameValue});
+
+  @override
+  List<Object> get props => [currentNameValue];
+}

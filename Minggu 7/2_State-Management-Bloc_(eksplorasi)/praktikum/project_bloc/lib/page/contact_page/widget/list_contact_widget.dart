@@ -50,18 +50,15 @@ class ListContactWidget extends StatelessWidget {
                       // spacing: 4,
                       children: [
                         IconButton(
-                            onPressed: () async {
+                            onPressed: () {
                               Navigator.pushNamed(context, Routes.halamanEdit,
                                   arguments: index);
-                              await Future.delayed(
-                                  const Duration(milliseconds: 200));
-
-                              // ignore: use_build_context_synchronously
+                              // await Future.delayed(
+                              //     const Duration(milliseconds: 200));
                               context.read<UsernameFieldBloc>().add(
                                   UsernameFieldEditEvent(
                                       currentNameValue: data.name));
 
-                              // ignore: use_build_context_synchronously
                               context.read<PhoneFieldBloc>().add(
                                   PhoneFieldEditEvent(
                                       currentPhoneValue: data.phone));

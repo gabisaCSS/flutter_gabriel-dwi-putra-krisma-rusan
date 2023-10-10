@@ -10,13 +10,17 @@ class PhoneFieldBlocWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<PhoneFieldBloc, PhoneFieldState>(
         builder: (context, state) {
-      if (state is PhoneFieldErrorState) {
-        // // perlu set text ke dalam controller nya, nanti posisi kursor nya error
-        // TextEditingController controller =
-        //     TextEditingController(text: state.phoneValue);
-        // // perlu set posisi kursor controller nya, kalo ga nanti tiap build ulang kursor nya dari awal terus
-        // controller.selection = TextSelection.fromPosition(
-        //     TextPosition(offset: state.phoneValue.length));
+      if (state is PhoneFieldAmanState) {
+        return TextFieldWidget(
+            label: 'Phone',
+            hintText: '08...',
+            keyboardType: TextInputType.number,
+            onChanged: (String val) {
+              context
+                  .read<PhoneFieldBloc>()
+                  .add(PhoneFieldInputEvent(value: val));
+            });
+      } else if (state is PhoneFieldErrorState) {
         return TextFieldWidget(
             label: 'Phone',
             hintText: '08...',
@@ -27,13 +31,21 @@ class PhoneFieldBlocWidget extends StatelessWidget {
                   .read<PhoneFieldBloc>()
                   .add(PhoneFieldInputEvent(value: val));
             });
-      } else if (state is PhoneFieldAmanState) {
-        // perlu set text ke dalam controller nya, nanti posisi kursor nya error
+      } else if (state is PhoneFieldClearState) {
+        TextEditingController controller = TextEditingController(text: '');
+        return TextFieldWidget(
+            label: 'Phone',
+            hintText: '08...',
+            keyboardType: TextInputType.number,
+            controller: controller,
+            onChanged: (String val) {
+              context
+                  .read<PhoneFieldBloc>()
+                  .add(PhoneFieldInputEvent(value: val));
+            });
+      } else if (state is PhoneFieldEditState) {
         TextEditingController controller =
-            TextEditingController(text: state.phoneValue);
-        // perlu set posisi kursor controller nya, kalo ga nanti tiap build ulang kursor nya dari awal terus
-        controller.selection = TextSelection.fromPosition(
-            TextPosition(offset: state.phoneValue.length));
+            TextEditingController(text: state.currentPhoneValue);
         return TextFieldWidget(
             label: 'Phone',
             hintText: '08...',

@@ -13,12 +13,12 @@ class UsernameFieldBloc extends Bloc<UsernameFieldEvent, UsernameFieldState> {
 
   void _onClearUsernameField(
       UsernameFieldClearEvent event, Emitter<UsernameFieldState> emit) {
-    emit(const UsernameFieldAmanState(nameValue: ''));
+    emit(UsernameFieldClearState());
   }
 
   void _onEditUsernameField(
       UsernameFieldEditEvent event, Emitter<UsernameFieldState> emit) {
-    emit(UsernameFieldAmanState(nameValue: event.currentNameValue));
+    emit(UsernameFieldEditState(currentNameValue: event.currentNameValue));
   }
 
   void _onUsernameChanged(

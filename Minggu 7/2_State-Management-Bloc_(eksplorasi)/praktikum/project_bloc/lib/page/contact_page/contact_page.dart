@@ -47,9 +47,11 @@ class ContactPage extends StatelessWidget {
                 context.read<ListContactBloc>().add(AddNewContactEvent(
                     name: stateUsername.nameValue,
                     phone: statePhone.phoneValue));
+
                 context
                     .read<UsernameFieldBloc>()
                     .add(UsernameFieldClearEvent());
+
                 context.read<PhoneFieldBloc>().add(PhoneFieldClearEvent());
               }
             },

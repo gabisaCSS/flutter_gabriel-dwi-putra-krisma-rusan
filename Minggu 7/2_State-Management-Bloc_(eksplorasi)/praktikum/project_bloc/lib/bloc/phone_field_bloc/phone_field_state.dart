@@ -24,3 +24,17 @@ final class PhoneFieldAmanState extends PhoneFieldState {
   @override
   List<Object> get props => [phoneValue];
 }
+
+final class PhoneFieldClearState extends PhoneFieldState {
+  @override
+  List<Object> get props => [];
+}
+
+final class PhoneFieldEditState extends PhoneFieldState {
+  final String currentPhoneValue;
+
+  const PhoneFieldEditState({required this.currentPhoneValue});
+
+  @override
+  List<Object> get props => [currentPhoneValue];
+}
