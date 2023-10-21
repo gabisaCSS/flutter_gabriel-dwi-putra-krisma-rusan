@@ -1,0 +1,15 @@
+system : You will be provided with a product description and seed words, and your task is to generate product names.
+user   : Product description: A nutrition recipe analysis and weight training (gym) tracker
+Seed words: healthy, bodybuilder, tracker
+
+Response : 
+1. MuscleFuel Nutrition Tracker
+2. FitTrack Bodybuilder Analyzer
+3. HealthTrek Gym Tracking System
+4. TrainPro Fitness Tracker
+5. MuscleMax Weightlifting Analyzer
+6. GymPro Nutrition and Workout Tracker
+7. FitScan Bodybuilder Tracking System
+8. WorkoutWise Weight Training Tracker
+9. NutriFit Gym and Nutrition Analyzer
+10. PowerTrack Weightlifting and Nutrition Tracker 
