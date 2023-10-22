@@ -10,11 +10,15 @@ class RecommendationScreen extends StatefulWidget {
 }
 
 class _RecommendationScreenState extends State<RecommendationScreen> {
-  final TextEditingController _controller = TextEditingController();
+  final TextEditingController _budgetController = TextEditingController();
+  final TextEditingController _cameraController = TextEditingController();
+  final TextEditingController _storageController = TextEditingController();
 
   @override
   void dispose() {
-    _controller.dispose();
+    _budgetController.dispose();
+    _cameraController.dispose();
+    _storageController.dispose();
     super.dispose();
   }
 
@@ -38,16 +42,40 @@ class _RecommendationScreenState extends State<RecommendationScreen> {
             ),
             TextField(
               decoration: const InputDecoration(
-                  label: Text('Budget'), hintText: 'ex : 15000000'),
-              controller: _controller,
+                  label: Text('Budget'), hintText: 'insert your budget in IDR'),
+              controller: _budgetController,
+              keyboardType: TextInputType.number,
+            ),
+            const SizedBox(
+              height: 24,
+            ),
+            TextField(
+              decoration: const InputDecoration(
+                  label: Text('Camera(mp)'),
+                  hintText: 'insert your camera spec in mega pixel'),
+              controller: _cameraController,
+              keyboardType: TextInputType.number,
+            ),
+            const SizedBox(
+              height: 24,
+            ),
+            TextField(
+              decoration: const InputDecoration(
+                  label: Text('Storage'), hintText: 'ex: 128GB'),
+              controller: _storageController,
+            ),
+            const SizedBox(
+              height: 24,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 24),
               child: ElevatedButton(
                   onPressed: () {
-                    context
-                        .read<RecommendationBloc>()
-                        .add(GetRecommendationEvent(budget: _controller.text));
+                    context.read<RecommendationBloc>().add(
+                        GetRecommendationEvent(
+                            budget: _budgetController.text,
+                            camera: _cameraController.text,
+                            internalStorage: _storageController.text));
                   },
                   child: const Text('Get Recommendation')),
             ),

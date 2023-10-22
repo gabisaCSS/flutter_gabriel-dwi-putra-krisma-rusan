@@ -9,9 +9,14 @@ sealed class RecommendationEvent extends Equatable {
 
 final class GetRecommendationEvent extends RecommendationEvent {
   final String budget;
+  final String camera;
+  final String internalStorage;
 
-  const GetRecommendationEvent({required this.budget});
+  const GetRecommendationEvent(
+      {required this.camera,
+      required this.internalStorage,
+      required this.budget});
 
   @override
-  List<Object> get props => [budget];
+  List<Object> get props => [budget, camera, internalStorage];
 }

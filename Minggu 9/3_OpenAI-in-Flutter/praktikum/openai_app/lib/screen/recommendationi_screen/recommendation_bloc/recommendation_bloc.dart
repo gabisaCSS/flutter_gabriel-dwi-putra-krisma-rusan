@@ -15,11 +15,13 @@ class RecommendationBloc
   void _onGetRecommendation(
       GetRecommendationEvent event, Emitter<RecommendationState> emit) async {
     final String budget = event.budget;
+    final String camera = event.camera;
+    final String internalStorage = event.internalStorage;
 
     try {
       emit(RecommendationLoadingState());
-      OpenAiModel openAiModel =
-          await RecommendationService.getRecommendation(budget: budget);
+      OpenAiModel openAiModel = await RecommendationService.getRecommendation(
+          budget: budget, camera: camera, internalStorage: internalStorage);
       emit(RecommendationLoadedState(openAiModel: openAiModel));
     } catch (e) {
       emit(const RecommendationErrorState(

@@ -6,7 +6,10 @@ import 'package:openai_app/models/openAi_model/openai_model.dart';
 import 'package:http/http.dart' as http;
 
 class RecommendationService {
-  static Future<OpenAiModel> getRecommendation({required String budget}) async {
+  static Future<OpenAiModel> getRecommendation(
+      {required String budget,
+      required String camera,
+      required String internalStorage}) async {
     late OpenAiModel openaiModel = OpenAiModel(
         id: "",
         object: "",
@@ -34,7 +37,7 @@ class RecommendationService {
       String smartphoneBudget = formatCurrency.format(int.parse(budget));
 
       String promptData =
-          "You are a smartphone expert. Give me a smartphone recommendations with budget equals $smartphoneBudget";
+          "You are a smartphone expert. Give me a smartphone recommendations with budget equals $smartphoneBudget with camera $camera mega pixel and internal storage $internalStorage";
 
       final data = jsonEncode({
         "model": "text-davinci-003",
